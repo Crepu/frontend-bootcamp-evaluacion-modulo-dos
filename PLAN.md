@@ -12,12 +12,12 @@
 code/
 ├── index.html          → Entrada principal (redirige a login)
 ├── login.html          → Pantalla de inicio de sesión
-├── menu.html           → Menú principal con resumen financiero
-├── deposit.html        → Pantalla de depósito (Lección 2)
-├── sendmoney.html      → Enviar dinero (Lección 2)
-├── transactions.html   → Historial de transacciones (Lección 2)
+├── menu.html           → Menú principal / Dashboard
+├── deposit.html        → Pantalla de depósito
+├── sendmoney.html      → Enviar dinero + contactos
+├── transactions.html   → Historial de transacciones
 ├── css/
-│   └── styles.css      → Estilos personalizados
+│   └── styles.css      → Estilos personalizados (~1160 líneas)
 ├── js/
 │   └── main.js         → Scripts JavaScript
 └── assets/
@@ -59,36 +59,42 @@ code/
 - [x] Crear `login.html` (estructura base)
 - [x] Crear `menu.html` (estructura base)
 
-### ⬜ Lección 2 - El lenguaje HTML
-- [ ] Estructura HTML semántica completa
-- [ ] Formularios con validaciones básicas
-- [ ] Crear `deposit.html`
-- [ ] Crear `sendmoney.html`
-- [ ] Crear `transactions.html`
+### ✅ Lección 2 - El lenguaje HTML
+- [x] Estructura HTML semántica completa
+- [x] Formularios con validaciones básicas
+- [x] Crear `deposit.html`
+- [x] Crear `sendmoney.html`
+- [x] Crear `transactions.html`
+- [x] Etiquetas semánticas: `<main>`, `<section>`, `<article>`, `<aside>`, `<nav>`
+- [x] Atributos ARIA para accesibilidad
+- [x] Breadcrumbs y skip links
 
 ### ⬜ Lección 3 - Estilos CSS y responsividad
-- [ ] Diseño responsive
-- [ ] Paleta de colores fintech
-- [ ] Tipografía profesional
-- [ ] Mejoras UI/UX
+- [ ] Diseño responsive mejorado
+- [ ] Paleta de colores fintech refinada
+- [ ] Tipografía profesional (Google Fonts)
+- [ ] Mejoras UI/UX visuales
+- [ ] Animaciones y transiciones
 
 ### ⬜ Lección 4 - Framework Bootstrap
-- [ ] Integrar Bootstrap
+- [ ] Integrar Bootstrap 5
 - [ ] Componentes responsivos
-- [ ] Barra de navegación
-- [ ] Modales y botones
+- [ ] Navbar con collapse móvil
+- [ ] Modales funcionales
+- [ ] Cards y alertas
 
 ### ⬜ Lección 5 - JavaScript
 - [ ] Validación de login
-- [ ] Gestión de saldo
+- [ ] Gestión de saldo (localStorage)
 - [ ] Eventos de depósito
 - [ ] Simulación de transferencias
+- [ ] Registro de transacciones
 
 ### ⬜ Lección 6 - jQuery
-- [ ] Efectos visuales
+- [ ] Efectos visuales y animaciones
 - [ ] Autocompletar contactos
 - [ ] Actualización dinámica de saldo
-- [ ] Animaciones UX
+- [ ] Manipulación del DOM optimizada
 
 ### ⬜ Lección 7 - Git y GitHub
 - [ ] Inicializar repositorio
@@ -101,28 +107,42 @@ code/
 ## 🎨 Guía de Diseño
 
 ### Paleta de Colores (Fintech)
-- **Primario:** #2563eb (Azul corporativo)
-- **Secundario:** #10b981 (Verde éxito)
-- **Acento:** #f59e0b (Naranja advertencia)
-- **Error:** #ef4444 (Rojo)
-- **Fondo:** #f8fafc (Gris claro)
-- **Texto:** #1e293b (Gris oscuro)
+| Variable | Color | Uso |
+|----------|-------|-----|
+| `--color-primary` | #2563eb | Azul corporativo |
+| `--color-primary-dark` | #1d4ed8 | Hover estados |
+| `--color-secondary` | #10b981 | Verde éxito/ingresos |
+| `--color-accent` | #f59e0b | Naranja advertencia |
+| `--color-error` | #ef4444 | Rojo errores/gastos |
+| `--color-background` | #f8fafc | Fondo general |
+| `--color-surface` | #ffffff | Tarjetas |
+| `--color-text` | #1e293b | Texto principal |
+| `--color-text-light` | #64748b | Texto secundario |
 
 ### Tipografía
-- **Títulos:** Sans-serif moderna
-- **Cuerpo:** Legible y profesional
+- **Sistema:** Segoe UI, Tahoma, sans-serif
+- **Próximo:** Google Fonts (Lección 3)
 
 ---
 
 ## 📝 Notas de Desarrollo
 
-### Lección 1 - Completada
+### Lección 1 - Completada ✅
 - Estructura inicial creada
 - Páginas base implementadas
 - Flujo de navegación definido
 - Estilos CSS base incluidos
 
+### Lección 2 - Completada ✅
+- 3 nuevas pantallas creadas (deposit, sendmoney, transactions)
+- HTML semántico implementado en todas las páginas
+- Formularios con validaciones HTML5
+- Componentes de contactos y modal
+- Historial de transacciones con filtros
+- Resumen financiero con tarjetas
+- +800 líneas de CSS añadidas
+- Mejoras de accesibilidad (ARIA, skip links)
+
 ---
 
-*Última actualización: Enero 2026*
-
+*Última actualización: 13 Enero 2026*
