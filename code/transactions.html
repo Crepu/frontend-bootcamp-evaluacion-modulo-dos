@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Historial de transacciones en Alke Wallet">
+    <title>Movimientos - Alke Wallet</title>
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header con navegación -->
+    <header class="header">
+        <div class="header-content">
+            <a href="menu.html" class="header-logo">💳 Alke Wallet</a>
+            <nav class="header-nav" aria-label="Navegación principal">
+                <a href="menu.html" class="nav-link">Inicio</a>
+                <a href="deposit.html" class="nav-link">Depositar</a>
+                <a href="sendmoney.html" class="nav-link">Enviar</a>
+                <a href="transactions.html" class="nav-link active" aria-current="page">Movimientos</a>
+                <a href="login.html" class="nav-link">Salir</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Contenido principal -->
+    <main class="dashboard">
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <ol>
+                <li><a href="menu.html">Inicio</a></li>
+                <li aria-current="page">Movimientos</li>
+            </ol>
+        </nav>
+        
+        <!-- Título de página -->
+        <section class="page-header">
+            <h1>📋 Historial de Movimientos</h1>
+            <p class="text-muted">Revisa todas tus transacciones</p>
+        </section>
+        
+        <!-- Resumen de cuenta -->
+        <section class="summary-cards">
+            <article class="summary-card summary-card-balance">
+                <h3 class="summary-label">Saldo actual</h3>
+                <p class="summary-value" id="currentBalance">$0.00</p>
+            </article>
+            <article class="summary-card summary-card-income">
+                <h3 class="summary-label">Ingresos del mes</h3>
+                <p class="summary-value summary-positive" id="monthlyIncome">+$0.00</p>
+            </article>
+            <article class="summary-card summary-card-expense">
+                <h3 class="summary-label">Gastos del mes</h3>
+                <p class="summary-value summary-negative" id="monthlyExpense">-$0.00</p>
+            </article>
+        </section>
+        
+        <!-- Filtros -->
+        <section class="filters-section">
+            <h2 class="sr-only">Filtrar transacciones</h2>
+            <form id="filtersForm" class="filters-form">
+                <div class="filter-group">
+                    <label for="filterType" class="form-label">Tipo</label>
+                    <select id="filterType" name="filterType" class="form-input form-select">
+                        <option value="all">Todos</option>
+                        <option value="deposit">Depósitos</option>
+                        <option value="sent">Enviados</option>
+                        <option value="received">Recibidos</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filterDateFrom" class="form-label">Desde</label>
+                    <input type="date" id="filterDateFrom" name="filterDateFrom" class="form-input">
+                </div>
+                <div class="filter-group">
+                    <label for="filterDateTo" class="form-label">Hasta</label>
+                    <input type="date" id="filterDateTo" name="filterDateTo" class="form-input">
+                </div>
+                <div class="filter-group filter-actions">
+                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                    <button type="reset" class="btn btn-outline">Limpiar</button>
+                </div>
+            </form>
+        </section>
+        
+        <!-- Lista de transacciones -->
+        <section class="transactions-section">
+            <h2>Transacciones recientes</h2>
+            
+            <!-- Contenedor de transacciones -->
+            <div id="transactionsList" class="transactions-list">
+                <!-- Transacción: Depósito -->
+                <article class="transaction-item transaction-deposit">
+                    <div class="transaction-icon" aria-hidden="true">💰</div>
+                    <div class="transaction-details">
+                        <h3 class="transaction-title">Depósito</h3>
+                        <p class="transaction-description">Depósito inicial</p>
+                        <time class="transaction-date" datetime="2026-01-13">13 Ene 2026, 10:30</time>
+                    </div>
+                    <div class="transaction-amount transaction-positive">
+                        +$500.00
+                    </div>
+                </article>
+                
+                <!-- Transacción: Envío -->
+                <article class="transaction-item transaction-sent">
+                    <div class="transaction-icon" aria-hidden="true">📤</div>
+                    <div class="transaction-details">
+                        <h3 class="transaction-title">Envío a Juan Pérez</h3>
+                        <p class="transaction-description">Pago de servicios</p>
+                        <time class="transaction-date" datetime="2026-01-12">12 Ene 2026, 15:45</time>
+                    </div>
+                    <div class="transaction-amount transaction-negative">
+                        -$150.00
+                    </div>
+                </article>
+                
+                <!-- Transacción: Recibido -->
+                <article class="transaction-item transaction-received">
+                    <div class="transaction-icon" aria-hidden="true">📥</div>
+                    <div class="transaction-details">
+                        <h3 class="transaction-title">Recibido de María García</h3>
+                        <p class="transaction-description">Reembolso</p>
+                        <time class="transaction-date" datetime="2026-01-11">11 Ene 2026, 09:20</time>
+                    </div>
+                    <div class="transaction-amount transaction-positive">
+                        +$75.00
+                    </div>
+                </article>
+                
+                <!-- Transacción: Depósito -->
+                <article class="transaction-item transaction-deposit">
+                    <div class="transaction-icon" aria-hidden="true">💰</div>
+                    <div class="transaction-details">
+                        <h3 class="transaction-title">Depósito</h3>
+                        <p class="transaction-description">Recarga mensual</p>
+                        <time class="transaction-date" datetime="2026-01-10">10 Ene 2026, 14:00</time>
+                    </div>
+                    <div class="transaction-amount transaction-positive">
+                        +$200.00
+                    </div>
+                </article>
+                
+                <!-- Transacción: Envío -->
+                <article class="transaction-item transaction-sent">
+                    <div class="transaction-icon" aria-hidden="true">📤</div>
+                    <div class="transaction-details">
+                        <h3 class="transaction-title">Envío a Carlos López</h3>
+                        <p class="transaction-description">Compra compartida</p>
+                        <time class="transaction-date" datetime="2026-01-09">09 Ene 2026, 18:30</time>
+                    </div>
+                    <div class="transaction-amount transaction-negative">
+                        -$80.00
+                    </div>
+                </article>
+            </div>
+            
+            <!-- Mensaje cuando no hay transacciones -->
+            <div id="noTransactions" class="empty-state hidden">
+                <div class="empty-icon">📭</div>
+                <h3>No hay transacciones</h3>
+                <p class="text-muted">Aún no tienes movimientos registrados</p>
+                <a href="deposit.html" class="btn btn-primary">Hacer mi primer depósito</a>
+            </div>
+            
+            <!-- Paginación -->
+            <nav class="pagination" aria-label="Paginación de transacciones">
+                <button type="button" class="btn-pagination" disabled aria-label="Página anterior">
+                    &laquo; Anterior
+                </button>
+                <span class="pagination-info">Página 1 de 1</span>
+                <button type="button" class="btn-pagination" disabled aria-label="Página siguiente">
+                    Siguiente &raquo;
+                </button>
+            </nav>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="text-muted">© 2026 Alke Wallet - Todos los derechos reservados</p>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
+

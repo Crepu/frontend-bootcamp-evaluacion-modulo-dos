@@ -1,6 +1,7 @@
 /* =============================================
-   ALKE WALLET - Estilos Base
+   ALKE WALLET - Estilos CSS
    Lección 1: Estructura inicial
+   Lección 2: HTML semántico y nuevos componentes
    ============================================= */
 
 /* Variables CSS - Paleta Fintech */
@@ -303,23 +304,815 @@ h1, h2, h3 {
     margin-bottom: 20px;
 }
 
-.hidden {
+.hidden,
+.form-error.hidden {
     display: none;
+}
+
+/* =============================================
+   ACCESIBILIDAD
+   ============================================= */
+
+/* Screen reader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Skip link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--color-primary);
+    color: white;
+    padding: 8px 16px;
+    z-index: 1000;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* =============================================
+   LOGIN PAGE - Lección 2
+   ============================================= */
+
+.login-page {
+    background: linear-gradient(135deg, var(--color-background) 0%, #e2e8f0 100%);
+}
+
+.login-card {
+    max-width: 420px;
+}
+
+.logo-tagline {
+    color: var(--color-text-light);
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.login-footer {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+}
+
+/* Checkbox */
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.checkbox-input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-primary);
+}
+
+.checkbox-label {
+    font-weight: normal;
+    color: var(--color-text-light);
+    cursor: pointer;
+}
+
+/* =============================================
+   NAVEGACIÓN MEJORADA
+   ============================================= */
+
+.nav-link.active {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.nav-link-logout {
+    color: var(--color-error);
+}
+
+.nav-link-logout:hover {
+    color: #dc2626;
+}
+
+.btn-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* =============================================
+   BREADCRUMB
+   ============================================= */
+
+.breadcrumb {
+    margin-bottom: 20px;
+}
+
+.breadcrumb ol {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.breadcrumb li::after {
+    content: "/";
+    margin-left: 10px;
+    color: var(--color-text-light);
+}
+
+.breadcrumb li:last-child::after {
+    content: "";
+}
+
+.breadcrumb a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.breadcrumb li[aria-current="page"] {
+    color: var(--color-text-light);
+}
+
+/* =============================================
+   PAGE HEADER
+   ============================================= */
+
+.page-header {
+    margin-bottom: 25px;
+}
+
+.page-header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+/* =============================================
+   FORMULARIOS EXTENDIDOS - Lección 2
+   ============================================= */
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.form-card {
+    max-width: 500px;
+}
+
+.form-card h2 {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Input con ícono */
+.input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 16px;
+    color: var(--color-text-light);
+    font-weight: 600;
+}
+
+.input-currency {
+    padding-left: 35px;
+}
+
+/* Select */
+.form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+}
+
+/* Texto de ayuda */
+.form-help {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--color-text-light);
+}
+
+/* Mensaje de error */
+.form-error {
+    display: block;
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--color-error);
+}
+
+/* Input inválido */
+.form-input:invalid:not(:placeholder-shown) {
+    border-color: var(--color-error);
+}
+
+/* Montos rápidos */
+.quick-amounts {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-quick-amount {
+    padding: 10px 20px;
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background: var(--color-surface);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.btn-quick-amount:hover,
+.btn-quick-amount.active {
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: white;
+}
+
+/* Acciones del formulario */
+.form-actions {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Botón outline */
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--color-border);
+    color: var(--color-text);
+}
+
+.btn-outline:hover {
+    border-color: var(--color-text-light);
+    background: var(--color-background);
+}
+
+/* Botón pequeño */
+.btn-small {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+/* =============================================
+   TARJETA DE SALDO PEQUEÑA
+   ============================================= */
+
+.balance-card-small {
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.balance-card-small .balance-amount {
+    font-size: 28px;
+}
+
+/* =============================================
+   INFO CARD
+   ============================================= */
+
+.info-card {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-top: 25px;
+}
+
+.info-card h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.info-card ul {
+    list-style: none;
+    font-size: 14px;
+    color: var(--color-text-light);
+}
+
+.info-card li {
+    padding: 5px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.info-card li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+}
+
+/* =============================================
+   TWO COLUMN LAYOUT
+   ============================================= */
+
+.two-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 25px;
+    align-items: start;
+}
+
+/* =============================================
+   CONTACTOS - Lección 2
+   ============================================= */
+
+.contacts-card {
+    max-width: none;
+}
+
+.contacts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.contacts-header h2 {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.contacts-list {
+    list-style: none;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: var(--border-radius);
+    transition: background 0.2s ease;
+}
+
+.contact-item:hover {
+    background: var(--color-background);
+}
+
+.contact-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.contact-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-name {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.contact-email {
+    font-size: 13px;
+    color: var(--color-text-light);
+}
+
+.btn-select-contact {
+    padding: 6px 12px;
+    font-size: 13px;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-select-contact:hover {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+/* Search results dropdown */
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+/* =============================================
+   MODAL - Lección 2
+   ============================================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal-content {
+    background: var(--color-surface);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: var(--shadow-lg);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.modal-header h3 {
+    margin-bottom: 0;
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--color-text-light);
+    line-height: 1;
+}
+
+.btn-close:hover {
+    color: var(--color-text);
+}
+
+.btn-cancel-modal {
+    background: transparent;
+    border: 1px solid var(--color-border);
+}
+
+/* =============================================
+   TRANSACTIONS - Lección 2
+   ============================================= */
+
+/* Summary cards */
+.summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.summary-card {
+    background: var(--color-surface);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.summary-card-balance {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: white;
+}
+
+.summary-label {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    opacity: 0.9;
+}
+
+.summary-value {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.summary-positive {
+    color: var(--color-secondary);
+}
+
+.summary-negative {
+    color: var(--color-error);
+}
+
+/* Filters */
+.filters-section {
+    background: var(--color-surface);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: var(--shadow-sm);
+}
+
+.filters-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.filter-group {
+    flex: 1;
+    min-width: 150px;
+}
+
+.filter-group .form-label {
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.filter-group .form-input {
+    padding: 10px 12px;
+    font-size: 14px;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-actions .btn {
+    padding: 10px 20px;
+}
+
+/* Transactions list */
+.transactions-section h2 {
+    margin-bottom: 20px;
+}
+
+.transactions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.transaction-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--color-surface);
+    border-radius: var(--border-radius);
+    padding: 18px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease;
+}
+
+.transaction-item:hover {
+    transform: translateX(5px);
+}
+
+.transaction-icon {
+    font-size: 28px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-background);
+    border-radius: 50%;
+}
+
+.transaction-details {
+    flex: 1;
+}
+
+.transaction-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.transaction-description {
+    font-size: 14px;
+    color: var(--color-text-light);
+    margin-bottom: 3px;
+}
+
+.transaction-date {
+    font-size: 12px;
+    color: var(--color-text-light);
+}
+
+.transaction-amount {
+    font-size: 18px;
+    font-weight: 700;
+    text-align: right;
+}
+
+.transaction-positive {
+    color: var(--color-secondary);
+}
+
+.transaction-negative {
+    color: var(--color-error);
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--color-surface);
+    border-radius: var(--border-radius);
+}
+
+.empty-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+.empty-state h3 {
+    margin-bottom: 10px;
+}
+
+.empty-state .btn {
+    margin-top: 20px;
+}
+
+.empty-state-small {
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.empty-state-small .btn {
+    margin-top: 15px;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+}
+
+.btn-pagination {
+    padding: 10px 20px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-pagination:hover:not(:disabled) {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+.btn-pagination:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination-info {
+    font-size: 14px;
+    color: var(--color-text-light);
+}
+
+/* =============================================
+   FOOTER MEJORADO
+   ============================================= */
+
+.footer {
+    background: var(--color-surface);
+    border-top: 1px solid var(--color-border);
+    padding: 25px 20px;
+    margin-top: 40px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-links .link {
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-links .link:hover {
+    color: var(--color-primary);
+}
+
+/* Section header */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.section-header h2 {
+    margin-bottom: 0;
+}
+
+/* Link */
+.link {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
 }
 
 /* =============================================
    RESPONSIVE
    ============================================= */
 
+@media (max-width: 992px) {
+    .two-column-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .contacts-card {
+        order: -1;
+    }
+}
+
 @media (max-width: 768px) {
     .header-content {
-        flex-direction: column;
-        gap: 15px;
+        flex-wrap: wrap;
     }
     
     .header-nav {
-        flex-wrap: wrap;
-        justify-content: center;
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 15px;
+    }
+    
+    .header-nav.active {
+        display: flex;
+    }
+    
+    .header-nav .nav-link {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--color-border);
+    }
+    
+    .btn-menu-toggle {
+        display: block;
     }
     
     .balance-amount {
@@ -328,6 +1121,41 @@ h1, h2, h3 {
     
     .actions-grid {
         grid-template-columns: 1fr;
+    }
+    
+    .summary-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .filters-form {
+        flex-direction: column;
+    }
+    
+    .filter-group {
+        width: 100%;
+    }
+    
+    .transaction-item {
+        flex-wrap: wrap;
+    }
+    
+    .transaction-amount {
+        width: 100%;
+        text-align: left;
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid var(--color-border);
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .pagination {
+        flex-direction: column;
+        gap: 15px;
     }
 }
 

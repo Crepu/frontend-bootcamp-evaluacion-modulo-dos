@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Enviar dinero a contactos en Alke Wallet">
+    <title>Enviar Dinero - Alke Wallet</title>
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header con navegación -->
+    <header class="header">
+        <div class="header-content">
+            <a href="menu.html" class="header-logo">💳 Alke Wallet</a>
+            <nav class="header-nav" aria-label="Navegación principal">
+                <a href="menu.html" class="nav-link">Inicio</a>
+                <a href="deposit.html" class="nav-link">Depositar</a>
+                <a href="sendmoney.html" class="nav-link active" aria-current="page">Enviar</a>
+                <a href="transactions.html" class="nav-link">Movimientos</a>
+                <a href="login.html" class="nav-link">Salir</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Contenido principal -->
+    <main class="dashboard">
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <ol>
+                <li><a href="menu.html">Inicio</a></li>
+                <li aria-current="page">Enviar Dinero</li>
+            </ol>
+        </nav>
+        
+        <!-- Título de página -->
+        <section class="page-header">
+            <h1>📤 Enviar Dinero</h1>
+            <p class="text-muted">Transfiere fondos a tus contactos de forma rápida</p>
+        </section>
+        
+        <!-- Saldo actual -->
+        <aside class="balance-card balance-card-small">
+            <p class="balance-label">Saldo disponible</p>
+            <p class="balance-amount" id="currentBalance">$0.00</p>
+        </aside>
+        
+        <!-- Layout de dos columnas -->
+        <div class="two-column-layout">
+            <!-- Columna izquierda: Formulario -->
+            <section class="card form-card">
+                <h2>Nueva transferencia</h2>
+                
+                <form id="sendMoneyForm" action="#" method="post">
+                    <fieldset>
+                        <legend class="sr-only">Datos de la transferencia</legend>
+                        
+                        <!-- Buscar contacto -->
+                        <div class="form-group">
+                            <label for="searchContact" class="form-label">Buscar contacto</label>
+                            <input 
+                                type="search" 
+                                id="searchContact" 
+                                name="searchContact" 
+                                class="form-input" 
+                                placeholder="Nombre o email del contacto"
+                                autocomplete="off"
+                                aria-describedby="searchHelp"
+                            >
+                            <small id="searchHelp" class="form-help">Escribe para buscar en tus contactos</small>
+                            
+                            <!-- Resultados de búsqueda (se llena con JS) -->
+                            <div id="searchResults" class="search-results hidden" role="listbox">
+                                <!-- Los resultados se insertarán aquí -->
+                            </div>
+                        </div>
+                        
+                        <!-- Destinatario seleccionado -->
+                        <div class="form-group">
+                            <label for="recipient" class="form-label">Destinatario</label>
+                            <input 
+                                type="email" 
+                                id="recipient" 
+                                name="recipient" 
+                                class="form-input" 
+                                placeholder="email@destinatario.com"
+                                required
+                            >
+                        </div>
+                        
+                        <!-- Monto a enviar -->
+                        <div class="form-group">
+                            <label for="amount" class="form-label">Monto a enviar</label>
+                            <div class="input-with-icon">
+                                <span class="input-icon">$</span>
+                                <input 
+                                    type="number" 
+                                    id="amount" 
+                                    name="amount" 
+                                    class="form-input input-currency" 
+                                    placeholder="0.00"
+                                    min="1"
+                                    step="0.01"
+                                    required
+                                    aria-describedby="amountHelp"
+                                >
+                            </div>
+                            <small id="amountHelp" class="form-help">Monto mínimo: $1.00</small>
+                        </div>
+                        
+                        <!-- Concepto -->
+                        <div class="form-group">
+                            <label for="concept" class="form-label">Concepto</label>
+                            <input 
+                                type="text" 
+                                id="concept" 
+                                name="concept" 
+                                class="form-input" 
+                                placeholder="Ej: Pago de servicios"
+                                maxlength="150"
+                                required
+                            >
+                        </div>
+                    </fieldset>
+                    
+                    <!-- Botones de acción -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Enviar Dinero
+                        </button>
+                        <a href="menu.html" class="btn btn-outline btn-block">
+                            Cancelar
+                        </a>
+                    </div>
+                </form>
+            </section>
+            
+            <!-- Columna derecha: Lista de contactos -->
+            <aside class="card contacts-card">
+                <header class="contacts-header">
+                    <h2>👥 Mis Contactos</h2>
+                    <button type="button" id="btnAddContact" class="btn btn-small btn-secondary">
+                        + Agregar
+                    </button>
+                </header>
+                
+                <!-- Lista de contactos -->
+                <ul id="contactsList" class="contacts-list" role="list">
+                    <!-- Contacto de ejemplo -->
+                    <li class="contact-item" data-email="juan@email.com">
+                        <div class="contact-avatar">JP</div>
+                        <div class="contact-info">
+                            <span class="contact-name">Juan Pérez</span>
+                            <span class="contact-email">juan@email.com</span>
+                        </div>
+                        <button type="button" class="btn-select-contact" aria-label="Seleccionar a Juan Pérez">
+                            Seleccionar
+                        </button>
+                    </li>
+                    <li class="contact-item" data-email="maria@email.com">
+                        <div class="contact-avatar">MG</div>
+                        <div class="contact-info">
+                            <span class="contact-name">María García</span>
+                            <span class="contact-email">maria@email.com</span>
+                        </div>
+                        <button type="button" class="btn-select-contact" aria-label="Seleccionar a María García">
+                            Seleccionar
+                        </button>
+                    </li>
+                    <li class="contact-item" data-email="carlos@email.com">
+                        <div class="contact-avatar">CL</div>
+                        <div class="contact-info">
+                            <span class="contact-name">Carlos López</span>
+                            <span class="contact-email">carlos@email.com</span>
+                        </div>
+                        <button type="button" class="btn-select-contact" aria-label="Seleccionar a Carlos López">
+                            Seleccionar
+                        </button>
+                    </li>
+                </ul>
+                
+                <!-- Mensaje si no hay contactos -->
+                <p id="noContacts" class="text-center text-muted hidden">
+                    No tienes contactos guardados
+                </p>
+            </aside>
+        </div>
+        
+        <!-- Modal para agregar contacto -->
+        <div id="addContactModal" class="modal hidden" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <h3 id="modalTitle">Agregar nuevo contacto</h3>
+                    <button type="button" class="btn-close" aria-label="Cerrar modal">&times;</button>
+                </header>
+                <form id="addContactForm">
+                    <div class="form-group">
+                        <label for="contactName" class="form-label">Nombre</label>
+                        <input type="text" id="contactName" name="contactName" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail" class="form-label">Email</label>
+                        <input type="email" id="contactEmail" name="contactEmail" class="form-input" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Guardar Contacto</button>
+                        <button type="button" class="btn btn-outline btn-cancel-modal">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="text-muted">© 2026 Alke Wallet - Todos los derechos reservados</p>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Depositar fondos en Alke Wallet">
+    <title>Depositar - Alke Wallet</title>
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header con navegación -->
+    <header class="header">
+        <div class="header-content">
+            <a href="menu.html" class="header-logo">💳 Alke Wallet</a>
+            <nav class="header-nav" aria-label="Navegación principal">
+                <a href="menu.html" class="nav-link">Inicio</a>
+                <a href="deposit.html" class="nav-link active" aria-current="page">Depositar</a>
+                <a href="sendmoney.html" class="nav-link">Enviar</a>
+                <a href="transactions.html" class="nav-link">Movimientos</a>
+                <a href="login.html" class="nav-link">Salir</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Contenido principal -->
+    <main class="dashboard">
+        <!-- Breadcrumb -->
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+            <ol>
+                <li><a href="menu.html">Inicio</a></li>
+                <li aria-current="page">Depositar</li>
+            </ol>
+        </nav>
+        
+        <!-- Título de página -->
+        <section class="page-header">
+            <h1>💰 Depositar Fondos</h1>
+            <p class="text-muted">Agrega dinero a tu cuenta de forma segura</p>
+        </section>
+        
+        <!-- Saldo actual -->
+        <aside class="balance-card balance-card-small">
+            <p class="balance-label">Saldo actual</p>
+            <p class="balance-amount" id="currentBalance">$0.00</p>
+        </aside>
+        
+        <!-- Formulario de depósito -->
+        <section class="card form-card">
+            <h2>Realizar depósito</h2>
+            
+            <form id="depositForm" action="#" method="post">
+                <!-- Monto a depositar -->
+                <fieldset>
+                    <legend class="sr-only">Información del depósito</legend>
+                    
+                    <div class="form-group">
+                        <label for="amount" class="form-label">Monto a depositar</label>
+                        <div class="input-with-icon">
+                            <span class="input-icon">$</span>
+                            <input 
+                                type="number" 
+                                id="amount" 
+                                name="amount" 
+                                class="form-input input-currency" 
+                                placeholder="0.00"
+                                min="1"
+                                step="0.01"
+                                required
+                                aria-describedby="amountHelp"
+                            >
+                        </div>
+                        <small id="amountHelp" class="form-help">Monto mínimo: $1.00</small>
+                    </div>
+                    
+                    <!-- Montos rápidos -->
+                    <div class="form-group">
+                        <label class="form-label">Montos rápidos</label>
+                        <div class="quick-amounts" role="group" aria-label="Seleccionar monto rápido">
+                            <button type="button" class="btn-quick-amount" data-amount="10">$10</button>
+                            <button type="button" class="btn-quick-amount" data-amount="50">$50</button>
+                            <button type="button" class="btn-quick-amount" data-amount="100">$100</button>
+                            <button type="button" class="btn-quick-amount" data-amount="500">$500</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Método de depósito -->
+                    <div class="form-group">
+                        <label for="paymentMethod" class="form-label">Método de pago</label>
+                        <select id="paymentMethod" name="paymentMethod" class="form-input form-select" required>
+                            <option value="">Selecciona un método</option>
+                            <option value="debit">Tarjeta de débito</option>
+                            <option value="credit">Tarjeta de crédito</option>
+                            <option value="transfer">Transferencia bancaria</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Descripción opcional -->
+                    <div class="form-group">
+                        <label for="description" class="form-label">Descripción (opcional)</label>
+                        <input 
+                            type="text" 
+                            id="description" 
+                            name="description" 
+                            class="form-input" 
+                            placeholder="Ej: Depósito mensual"
+                            maxlength="100"
+                        >
+                    </div>
+                </fieldset>
+                
+                <!-- Botones de acción -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Realizar Depósito
+                    </button>
+                    <a href="menu.html" class="btn btn-outline btn-block">
+                        Cancelar
+                    </a>
+                </div>
+            </form>
+        </section>
+        
+        <!-- Información adicional -->
+        <aside class="info-card">
+            <h3>ℹ️ Información importante</h3>
+            <ul>
+                <li>Los depósitos se reflejan de forma inmediata en tu saldo.</li>
+                <li>No hay comisiones por depósitos.</li>
+                <li>Puedes depositar las 24 horas del día.</li>
+            </ul>
+        </aside>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="text-muted">© 2026 Alke Wallet - Todos los derechos reservados</p>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
+

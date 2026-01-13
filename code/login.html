@@ -3,68 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Iniciar sesión en Alke Wallet">
+    <meta name="description" content="Iniciar sesión en Alke Wallet - Tu billetera digital segura">
+    <meta name="theme-color" content="#2563eb">
     <title>Iniciar Sesión - Alke Wallet</title>
     
     <!-- Estilos -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-    <!-- 
-        Pantalla de Inicio de Sesión
-        Lección 1: Estructura base
-        Lección 5: Se agregará validación JavaScript
-    -->
+<body class="login-page">
+    <!-- Contenedor principal de login -->
     <main class="centered-layout">
-        <div class="card">
+        <article class="card login-card">
             <!-- Logo y título -->
             <header class="logo">
-                <div class="logo-icon">💳</div>
-                <div class="logo-text">Alke Wallet</div>
+                <div class="logo-icon" aria-hidden="true">💳</div>
+                <h1 class="logo-text">Alke Wallet</h1>
+                <p class="logo-tagline">Tu billetera digital segura</p>
             </header>
             
             <!-- Formulario de login -->
-            <form id="loginForm" action="menu.html" method="get">
-                <div class="form-group">
-                    <label for="email" class="form-label">Correo electrónico</label>
-                    <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        class="form-input" 
-                        placeholder="ejemplo@correo.com"
-                        required
-                    >
-                </div>
+            <form id="loginForm" action="menu.html" method="get" novalidate>
+                <fieldset>
+                    <legend class="sr-only">Credenciales de acceso</legend>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Correo electrónico</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="ejemplo@correo.com"
+                            autocomplete="email"
+                            required
+                            aria-describedby="emailError"
+                        >
+                        <span id="emailError" class="form-error hidden" role="alert">
+                            Ingresa un correo válido
+                        </span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-input" 
+                            placeholder="••••••••"
+                            autocomplete="current-password"
+                            required
+                            minlength="6"
+                            aria-describedby="passwordError"
+                        >
+                        <span id="passwordError" class="form-error hidden" role="alert">
+                            La contraseña debe tener al menos 6 caracteres
+                        </span>
+                    </div>
+                    
+                    <!-- Recordar sesión -->
+                    <div class="form-group form-checkbox">
+                        <input type="checkbox" id="remember" name="remember" class="checkbox-input">
+                        <label for="remember" class="checkbox-label">Recordar mi sesión</label>
+                    </div>
+                </fieldset>
                 
-                <div class="form-group">
-                    <label for="password" class="form-label">Contraseña</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        name="password" 
-                        class="form-input" 
-                        placeholder="••••••••"
-                        required
-                    >
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Iniciar Sesión
+                    </button>
                 </div>
-                
-                <button type="submit" class="btn btn-primary btn-block">
-                    Iniciar Sesión
-                </button>
             </form>
             
             <!-- Enlaces adicionales -->
-            <div class="text-center mt-20">
+            <footer class="login-footer">
                 <p class="text-muted">
                     ¿No tienes cuenta? 
-                    <a href="#" class="link">Regístrate</a>
+                    <a href="#" class="link">Regístrate aquí</a>
                 </p>
                 <p class="text-muted">
                     <a href="#" class="link">¿Olvidaste tu contraseña?</a>
                 </p>
-            </div>
-        </div>
+            </footer>
+        </article>
     </main>
     
     <!-- Scripts -->
