@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel principal de Alke Wallet">
+    <title>Mi Wallet - Alke Wallet</title>
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- 
+        Menú Principal / Dashboard
+        Lección 1: Estructura base
+        Lección 4: Se mejorará con Bootstrap
+    -->
+    
+    <!-- Header con navegación -->
+    <header class="header">
+        <div class="header-content">
+            <a href="menu.html" class="header-logo">💳 Alke Wallet</a>
+            <nav class="header-nav">
+                <a href="menu.html" class="nav-link">Inicio</a>
+                <a href="deposit.html" class="nav-link">Depositar</a>
+                <a href="sendmoney.html" class="nav-link">Enviar</a>
+                <a href="transactions.html" class="nav-link">Movimientos</a>
+                <a href="login.html" class="nav-link">Salir</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Contenido principal -->
+    <main class="dashboard">
+        <!-- Sección de bienvenida -->
+        <section class="welcome-section">
+            <h1>¡Bienvenido!</h1>
+            <p class="text-muted">Gestiona tus finanzas de forma fácil y segura</p>
+        </section>
+        
+        <!-- Tarjeta de saldo -->
+        <section class="balance-card">
+            <p class="balance-label">Saldo disponible</p>
+            <p class="balance-amount" id="currentBalance">$0.00</p>
+        </section>
+        
+        <!-- Acciones rápidas -->
+        <section>
+            <h2>Acciones rápidas</h2>
+            <div class="actions-grid">
+                <!-- Depositar -->
+                <a href="deposit.html" class="action-card">
+                    <div class="action-icon">💰</div>
+                    <h3 class="action-title">Depositar</h3>
+                    <p class="action-description">Agrega fondos a tu cuenta</p>
+                </a>
+                
+                <!-- Enviar dinero -->
+                <a href="sendmoney.html" class="action-card">
+                    <div class="action-icon">📤</div>
+                    <h3 class="action-title">Enviar dinero</h3>
+                    <p class="action-description">Transfiere a otros usuarios</p>
+                </a>
+                
+                <!-- Historial -->
+                <a href="transactions.html" class="action-card">
+                    <div class="action-icon">📋</div>
+                    <h3 class="action-title">Movimientos</h3>
+                    <p class="action-description">Revisa tu historial</p>
+                </a>
+                
+                <!-- Contactos -->
+                <a href="sendmoney.html" class="action-card">
+                    <div class="action-icon">👥</div>
+                    <h3 class="action-title">Contactos</h3>
+                    <p class="action-description">Gestiona tus contactos</p>
+                </a>
+            </div>
+        </section>
+        
+        <!-- Últimos movimientos (resumen) -->
+        <section class="mt-20">
+            <h2>Últimos movimientos</h2>
+            <div class="card">
+                <p class="text-center text-muted">
+                    No hay movimientos recientes
+                </p>
+                <!-- 
+                    Aquí se mostrarán las transacciones recientes
+                    Se implementará en Lección 5 con JavaScript
+                -->
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="text-center mt-20" style="padding: 20px;">
+        <p class="text-muted">© 2026 Alke Wallet - Todos los derechos reservados</p>
+    </footer>
+    
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
+

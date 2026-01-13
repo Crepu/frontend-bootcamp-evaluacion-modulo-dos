@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Iniciar sesión en Alke Wallet">
+    <title>Iniciar Sesión - Alke Wallet</title>
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- 
+        Pantalla de Inicio de Sesión
+        Lección 1: Estructura base
+        Lección 5: Se agregará validación JavaScript
+    -->
+    <main class="centered-layout">
+        <div class="card">
+            <!-- Logo y título -->
+            <header class="logo">
+                <div class="logo-icon">💳</div>
+                <div class="logo-text">Alke Wallet</div>
+            </header>
+            
+            <!-- Formulario de login -->
+            <form id="loginForm" action="menu.html" method="get">
+                <div class="form-group">
+                    <label for="email" class="form-label">Correo electrónico</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-input" 
+                        placeholder="ejemplo@correo.com"
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        class="form-input" 
+                        placeholder="••••••••"
+                        required
+                    >
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">
+                    Iniciar Sesión
+                </button>
+            </form>
+            
+            <!-- Enlaces adicionales -->
+            <div class="text-center mt-20">
+                <p class="text-muted">
+                    ¿No tienes cuenta? 
+                    <a href="#" class="link">Regístrate</a>
+                </p>
+                <p class="text-muted">
+                    <a href="#" class="link">¿Olvidaste tu contraseña?</a>
+                </p>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
+
