@@ -69,12 +69,14 @@ code/
 - [x] Atributos ARIA para accesibilidad
 - [x] Breadcrumbs y skip links
 
-### ⬜ Lección 3 - Estilos CSS y responsividad
-- [ ] Diseño responsive mejorado
-- [ ] Paleta de colores fintech refinada
-- [ ] Tipografía profesional (Google Fonts)
-- [ ] Mejoras UI/UX visuales
-- [ ] Animaciones y transiciones
+### ✅ Lección 3 - Estilos CSS y responsividad
+- [x] Diseño responsive mejorado
+- [x] Paleta de colores fintech refinada
+- [x] Tipografía profesional (Google Fonts: Inter + Poppins)
+- [x] Mejoras UI/UX visuales
+- [x] Animaciones y transiciones CSS
+- [x] Variables CSS extendidas (colores, sombras, transiciones)
+- [x] Efectos hover y estados interactivos
 
 ### ⬜ Lección 4 - Framework Bootstrap
 - [ ] Integrar Bootstrap 5
@@ -120,8 +122,9 @@ code/
 | `--color-text-light` | #64748b | Texto secundario |
 
 ### Tipografía
-- **Sistema:** Segoe UI, Tahoma, sans-serif
-- **Próximo:** Google Fonts (Lección 3)
+- **Cuerpo:** Inter (Google Fonts)
+- **Títulos:** Poppins (Google Fonts)
+- **Fallback:** -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif
 
 ---
 
@@ -142,6 +145,17 @@ code/
 - Resumen financiero con tarjetas
 - +800 líneas de CSS añadidas
 - Mejoras de accesibilidad (ARIA, skip links)
+
+### Lección 3 - Completada ✅
+- Google Fonts integrado (Inter + Poppins)
+- Variables CSS extendidas (+30 nuevas variables)
+- Animaciones: fadeInUp, scaleIn, slideInRight, float
+- Efectos hover mejorados en cards, botones y transacciones
+- Gradientes y sombras refinados
+- Header con backdrop-filter (blur)
+- Balance card con decoraciones visuales
+- Transacciones con iconos coloreados por tipo
+- Animaciones escalonadas en listas
 
 ---
 
