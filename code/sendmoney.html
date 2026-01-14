@@ -11,219 +11,282 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Estilos -->
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Estilos personalizados -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- Header con navegación -->
-    <header class="header">
-        <div class="header-content">
-            <a href="menu.html" class="header-logo">💳 Alke Wallet</a>
-            <nav class="header-nav" aria-label="Navegación principal">
-                <a href="menu.html" class="nav-link">Inicio</a>
-                <a href="deposit.html" class="nav-link">Depositar</a>
-                <a href="sendmoney.html" class="nav-link active" aria-current="page">Enviar</a>
-                <a href="transactions.html" class="nav-link">Movimientos</a>
-                <a href="login.html" class="nav-link">Salir</a>
-            </nav>
+    <!-- Navbar Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="menu.html">
+                <span class="me-2" style="font-size: 1.5rem;">💳</span>
+                Alke Wallet
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="menu.html"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="deposit.html"><i class="bi bi-plus-circle me-1"></i>Depositar</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="sendmoney.html"><i class="bi bi-send me-1"></i>Enviar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="transactions.html"><i class="bi bi-clock-history me-1"></i>Movimientos</a></li>
+                    <li class="nav-item"><a class="nav-link text-danger" href="login.html"><i class="bi bi-box-arrow-right me-1"></i>Salir</a></li>
+                </ul>
+            </div>
         </div>
-    </header>
+    </nav>
     
     <!-- Contenido principal -->
-    <main class="dashboard">
-        <!-- Breadcrumb -->
-        <nav aria-label="Breadcrumb" class="breadcrumb">
-            <ol>
-                <li><a href="menu.html">Inicio</a></li>
-                <li aria-current="page">Enviar Dinero</li>
+    <main class="container py-4">
+        <!-- Breadcrumb Bootstrap -->
+        <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="menu.html">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Enviar Dinero</li>
             </ol>
         </nav>
         
         <!-- Título de página -->
-        <section class="page-header">
-            <h1>📤 Enviar Dinero</h1>
-            <p class="text-muted">Transfiere fondos a tus contactos de forma rápida</p>
-        </section>
-        
-        <!-- Saldo actual -->
-        <aside class="balance-card balance-card-small">
-            <p class="balance-label">Saldo disponible</p>
-            <p class="balance-amount" id="currentBalance">$0.00</p>
-        </aside>
-        
-        <!-- Layout de dos columnas -->
-        <div class="two-column-layout">
-            <!-- Columna izquierda: Formulario -->
-            <section class="card form-card">
-                <h2>Nueva transferencia</h2>
-                
-                <form id="sendMoneyForm" action="#" method="post">
-                    <fieldset>
-                        <legend class="sr-only">Datos de la transferencia</legend>
-                        
-                        <!-- Buscar contacto -->
-                        <div class="form-group">
-                            <label for="searchContact" class="form-label">Buscar contacto</label>
-                            <input 
-                                type="search" 
-                                id="searchContact" 
-                                name="searchContact" 
-                                class="form-input" 
-                                placeholder="Nombre o email del contacto"
-                                autocomplete="off"
-                                aria-describedby="searchHelp"
-                            >
-                            <small id="searchHelp" class="form-help">Escribe para buscar en tus contactos</small>
-                            
-                            <!-- Resultados de búsqueda (se llena con JS) -->
-                            <div id="searchResults" class="search-results hidden" role="listbox">
-                                <!-- Los resultados se insertarán aquí -->
-                            </div>
-                        </div>
-                        
-                        <!-- Destinatario seleccionado -->
-                        <div class="form-group">
-                            <label for="recipient" class="form-label">Destinatario</label>
-                            <input 
-                                type="email" 
-                                id="recipient" 
-                                name="recipient" 
-                                class="form-input" 
-                                placeholder="email@destinatario.com"
-                                required
-                            >
-                        </div>
-                        
-                        <!-- Monto a enviar -->
-                        <div class="form-group">
-                            <label for="amount" class="form-label">Monto a enviar</label>
-                            <div class="input-with-icon">
-                                <span class="input-icon">$</span>
-                                <input 
-                                    type="number" 
-                                    id="amount" 
-                                    name="amount" 
-                                    class="form-input input-currency" 
-                                    placeholder="0.00"
-                                    min="1"
-                                    step="0.01"
-                                    required
-                                    aria-describedby="amountHelp"
-                                >
-                            </div>
-                            <small id="amountHelp" class="form-help">Monto mínimo: $1.00</small>
-                        </div>
-                        
-                        <!-- Concepto -->
-                        <div class="form-group">
-                            <label for="concept" class="form-label">Concepto</label>
-                            <input 
-                                type="text" 
-                                id="concept" 
-                                name="concept" 
-                                class="form-input" 
-                                placeholder="Ej: Pago de servicios"
-                                maxlength="150"
-                                required
-                            >
-                        </div>
-                    </fieldset>
-                    
-                    <!-- Botones de acción -->
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary btn-block">
-                            Enviar Dinero
-                        </button>
-                        <a href="menu.html" class="btn btn-outline btn-block">
-                            Cancelar
-                        </a>
-                    </div>
-                </form>
-            </section>
-            
-            <!-- Columna derecha: Lista de contactos -->
-            <aside class="card contacts-card">
-                <header class="contacts-header">
-                    <h2>👥 Mis Contactos</h2>
-                    <button type="button" id="btnAddContact" class="btn btn-small btn-secondary">
-                        + Agregar
-                    </button>
-                </header>
-                
-                <!-- Lista de contactos -->
-                <ul id="contactsList" class="contacts-list" role="list">
-                    <!-- Contacto de ejemplo -->
-                    <li class="contact-item" data-email="juan@email.com">
-                        <div class="contact-avatar">JP</div>
-                        <div class="contact-info">
-                            <span class="contact-name">Juan Pérez</span>
-                            <span class="contact-email">juan@email.com</span>
-                        </div>
-                        <button type="button" class="btn-select-contact" aria-label="Seleccionar a Juan Pérez">
-                            Seleccionar
-                        </button>
-                    </li>
-                    <li class="contact-item" data-email="maria@email.com">
-                        <div class="contact-avatar">MG</div>
-                        <div class="contact-info">
-                            <span class="contact-name">María García</span>
-                            <span class="contact-email">maria@email.com</span>
-                        </div>
-                        <button type="button" class="btn-select-contact" aria-label="Seleccionar a María García">
-                            Seleccionar
-                        </button>
-                    </li>
-                    <li class="contact-item" data-email="carlos@email.com">
-                        <div class="contact-avatar">CL</div>
-                        <div class="contact-info">
-                            <span class="contact-name">Carlos López</span>
-                            <span class="contact-email">carlos@email.com</span>
-                        </div>
-                        <button type="button" class="btn-select-contact" aria-label="Seleccionar a Carlos López">
-                            Seleccionar
-                        </button>
-                    </li>
-                </ul>
-                
-                <!-- Mensaje si no hay contactos -->
-                <p id="noContacts" class="text-center text-muted hidden">
-                    No tienes contactos guardados
-                </p>
-            </aside>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="h3 mb-1"><i class="bi bi-send text-primary me-2"></i>Enviar Dinero</h1>
+                <p class="text-muted mb-0">Transfiere fondos a tus contactos de forma rápida</p>
+            </div>
         </div>
         
-        <!-- Modal para agregar contacto -->
-        <div id="addContactModal" class="modal hidden" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
-            <div class="modal-content">
-                <header class="modal-header">
-                    <h3 id="modalTitle">Agregar nuevo contacto</h3>
-                    <button type="button" class="btn-close" aria-label="Cerrar modal">&times;</button>
-                </header>
-                <form id="addContactForm">
-                    <div class="form-group">
-                        <label for="contactName" class="form-label">Nombre</label>
-                        <input type="text" id="contactName" name="contactName" class="form-input" required>
+        <!-- Saldo actual -->
+        <div class="alert alert-primary d-flex align-items-center mb-4" role="alert">
+            <i class="bi bi-wallet2 me-3 fs-4"></i>
+            <div>
+                <small class="d-block">Saldo disponible</small>
+                <strong class="fs-5" id="currentBalance">$0.00</strong>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Columna izquierda: Formulario -->
+            <div class="col-lg-7">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white py-3">
+                        <h2 class="h5 mb-0"><i class="bi bi-arrow-right-circle me-2"></i>Nueva transferencia</h2>
                     </div>
-                    <div class="form-group">
-                        <label for="contactEmail" class="form-label">Email</label>
-                        <input type="email" id="contactEmail" name="contactEmail" class="form-input" required>
+                    <div class="card-body">
+                        <form id="sendMoneyForm" class="needs-validation" novalidate>
+                            <!-- Buscar contacto -->
+                            <div class="mb-3">
+                                <label for="searchContact" class="form-label">
+                                    <i class="bi bi-search me-1"></i>Buscar contacto
+                                </label>
+                                <input 
+                                    type="search" 
+                                    id="searchContact" 
+                                    class="form-control" 
+                                    placeholder="Nombre o email del contacto"
+                                    autocomplete="off"
+                                >
+                                <div class="form-text">Escribe para buscar en tus contactos</div>
+                            </div>
+                            
+                            <!-- Destinatario -->
+                            <div class="mb-3">
+                                <label for="recipient" class="form-label">
+                                    <i class="bi bi-person me-1"></i>Destinatario
+                                </label>
+                                <input 
+                                    type="email" 
+                                    id="recipient" 
+                                    name="recipient" 
+                                    class="form-control" 
+                                    placeholder="email@destinatario.com"
+                                    required
+                                >
+                                <div class="invalid-feedback">Ingresa un email válido.</div>
+                            </div>
+                            
+                            <!-- Monto -->
+                            <div class="mb-3">
+                                <label for="amount" class="form-label">
+                                    <i class="bi bi-currency-dollar me-1"></i>Monto a enviar
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input 
+                                        type="number" 
+                                        id="amount" 
+                                        name="amount" 
+                                        class="form-control" 
+                                        placeholder="0.00"
+                                        min="1"
+                                        step="0.01"
+                                        required
+                                    >
+                                </div>
+                                <div class="form-text">Monto mínimo: $1.00</div>
+                                <div class="invalid-feedback">Ingresa un monto válido.</div>
+                            </div>
+                            
+                            <!-- Concepto -->
+                            <div class="mb-4">
+                                <label for="concept" class="form-label">
+                                    <i class="bi bi-chat-left-text me-1"></i>Concepto
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="concept" 
+                                    name="concept" 
+                                    class="form-control" 
+                                    placeholder="Ej: Pago de servicios"
+                                    maxlength="150"
+                                    required
+                                >
+                                <div class="invalid-feedback">Ingresa un concepto.</div>
+                            </div>
+                            
+                            <!-- Botones -->
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="bi bi-send me-2"></i>Enviar Dinero
+                                </button>
+                                <a href="menu.html" class="btn btn-outline-secondary">Cancelar</a>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">Guardar Contacto</button>
-                        <button type="button" class="btn btn-outline btn-cancel-modal">Cancelar</button>
+                </div>
+            </div>
+            
+            <!-- Columna derecha: Contactos -->
+            <div class="col-lg-5">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                        <h2 class="h5 mb-0"><i class="bi bi-people me-2"></i>Mis Contactos</h2>
+                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addContactModal">
+                            <i class="bi bi-plus-lg me-1"></i>Agregar
+                        </button>
                     </div>
-                </form>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush" id="contactsList">
+                            <!-- Contacto 1 -->
+                            <button type="button" class="list-group-item list-group-item-action d-flex align-items-center py-3" data-email="juan@email.com">
+                                <div class="avatar bg-primary text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">JP</div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-0">Juan Pérez</h6>
+                                    <small class="text-muted">juan@email.com</small>
+                                </div>
+                                <i class="bi bi-chevron-right text-muted"></i>
+                            </button>
+                            <!-- Contacto 2 -->
+                            <button type="button" class="list-group-item list-group-item-action d-flex align-items-center py-3" data-email="maria@email.com">
+                                <div class="avatar bg-success text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">MG</div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-0">María García</h6>
+                                    <small class="text-muted">maria@email.com</small>
+                                </div>
+                                <i class="bi bi-chevron-right text-muted"></i>
+                            </button>
+                            <!-- Contacto 3 -->
+                            <button type="button" class="list-group-item list-group-item-action d-flex align-items-center py-3" data-email="carlos@email.com">
+                                <div class="avatar bg-info text-white rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 45px; height: 45px;">CL</div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-0">Carlos López</h6>
+                                    <small class="text-muted">carlos@email.com</small>
+                                </div>
+                                <i class="bi bi-chevron-right text-muted"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
     
+    <!-- Modal Agregar Contacto (Bootstrap) -->
+    <div class="modal fade" id="addContactModal" tabindex="-1" aria-labelledby="addContactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addContactModalLabel">
+                        <i class="bi bi-person-plus me-2"></i>Agregar nuevo contacto
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <form id="addContactForm" class="needs-validation" novalidate>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="contactName" class="form-label">Nombre completo</label>
+                            <input type="text" class="form-control" id="contactName" name="contactName" required>
+                            <div class="invalid-feedback">Ingresa el nombre del contacto.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="contactEmail" name="contactEmail" required>
+                            <div class="invalid-feedback">Ingresa un email válido.</div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-check-lg me-1"></i>Guardar Contacto
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Confirmación Envío -->
+    <div class="modal fade" id="confirmSendModal" tabindex="-1" aria-labelledby="confirmSendModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="confirmSendModalLabel">
+                        <i class="bi bi-check-circle me-2"></i>Confirmar Transferencia
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <i class="bi bi-send-check text-primary" style="font-size: 4rem;"></i>
+                    <h4 class="mt-3">¿Confirmar envío?</h4>
+                    <p class="text-muted mb-0">Enviar <strong id="confirmAmount">$0.00</strong> a <strong id="confirmRecipient">email@ejemplo.com</strong></p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirmSendBtn">
+                        <i class="bi bi-send me-1"></i>Confirmar Envío
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast de éxito -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="successToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <i class="bi bi-check-circle me-2"></i>
+                    <span id="toastMessage">Operación exitosa</span>
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+            </div>
+        </div>
+    </div>
+    
     <!-- Footer -->
-    <footer class="footer">
-        <p class="text-muted">© 2026 Alke Wallet - Todos los derechos reservados</p>
+    <footer class="bg-light border-top py-3 mt-auto">
+        <div class="container text-center">
+            <p class="text-muted mb-0">© 2026 Alke Wallet - Todos los derechos reservados</p>
+        </div>
     </footer>
     
-    <!-- Scripts -->
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Scripts personalizados -->
     <script src="js/main.js"></script>
 </body>
 </html>
-

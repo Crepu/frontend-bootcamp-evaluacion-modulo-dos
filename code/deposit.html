@@ -11,140 +11,207 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Estilos -->
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Estilos personalizados -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- Header con navegación -->
-    <header class="header">
-        <div class="header-content">
-            <a href="menu.html" class="header-logo">💳 Alke Wallet</a>
-            <nav class="header-nav" aria-label="Navegación principal">
-                <a href="menu.html" class="nav-link">Inicio</a>
-                <a href="deposit.html" class="nav-link active" aria-current="page">Depositar</a>
-                <a href="sendmoney.html" class="nav-link">Enviar</a>
-                <a href="transactions.html" class="nav-link">Movimientos</a>
-                <a href="login.html" class="nav-link">Salir</a>
-            </nav>
+    <!-- Navbar Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="menu.html">
+                <span class="me-2" style="font-size: 1.5rem;">💳</span>
+                Alke Wallet
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="menu.html"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="deposit.html"><i class="bi bi-plus-circle me-1"></i>Depositar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sendmoney.html"><i class="bi bi-send me-1"></i>Enviar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="transactions.html"><i class="bi bi-clock-history me-1"></i>Movimientos</a></li>
+                    <li class="nav-item"><a class="nav-link text-danger" href="login.html"><i class="bi bi-box-arrow-right me-1"></i>Salir</a></li>
+                </ul>
+            </div>
         </div>
-    </header>
+    </nav>
     
     <!-- Contenido principal -->
-    <main class="dashboard">
+    <main class="container py-4">
         <!-- Breadcrumb -->
-        <nav aria-label="Breadcrumb" class="breadcrumb">
-            <ol>
-                <li><a href="menu.html">Inicio</a></li>
-                <li aria-current="page">Depositar</li>
+        <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="menu.html">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Depositar</li>
             </ol>
         </nav>
         
-        <!-- Título de página -->
-        <section class="page-header">
-            <h1>💰 Depositar Fondos</h1>
-            <p class="text-muted">Agrega dinero a tu cuenta de forma segura</p>
-        </section>
+        <!-- Título -->
+        <div class="mb-4">
+            <h1 class="h3 mb-1"><i class="bi bi-plus-circle text-success me-2"></i>Depositar Fondos</h1>
+            <p class="text-muted mb-0">Agrega dinero a tu cuenta de forma segura</p>
+        </div>
         
-        <!-- Saldo actual -->
-        <aside class="balance-card balance-card-small">
-            <p class="balance-label">Saldo actual</p>
-            <p class="balance-amount" id="currentBalance">$0.00</p>
-        </aside>
-        
-        <!-- Formulario de depósito -->
-        <section class="card form-card">
-            <h2>Realizar depósito</h2>
-            
-            <form id="depositForm" action="#" method="post">
-                <!-- Monto a depositar -->
-                <fieldset>
-                    <legend class="sr-only">Información del depósito</legend>
-                    
-                    <div class="form-group">
-                        <label for="amount" class="form-label">Monto a depositar</label>
-                        <div class="input-with-icon">
-                            <span class="input-icon">$</span>
-                            <input 
-                                type="number" 
-                                id="amount" 
-                                name="amount" 
-                                class="form-input input-currency" 
-                                placeholder="0.00"
-                                min="1"
-                                step="0.01"
-                                required
-                                aria-describedby="amountHelp"
-                            >
-                        </div>
-                        <small id="amountHelp" class="form-help">Monto mínimo: $1.00</small>
+        <div class="row g-4">
+            <!-- Columna principal -->
+            <div class="col-lg-8">
+                <!-- Saldo actual -->
+                <div class="alert alert-success d-flex align-items-center mb-4" role="alert">
+                    <i class="bi bi-wallet2 me-3 fs-4"></i>
+                    <div>
+                        <small class="d-block">Saldo actual</small>
+                        <strong class="fs-5" id="currentBalance">$0.00</strong>
                     </div>
-                    
-                    <!-- Montos rápidos -->
-                    <div class="form-group">
-                        <label class="form-label">Montos rápidos</label>
-                        <div class="quick-amounts" role="group" aria-label="Seleccionar monto rápido">
-                            <button type="button" class="btn-quick-amount" data-amount="10">$10</button>
-                            <button type="button" class="btn-quick-amount" data-amount="50">$50</button>
-                            <button type="button" class="btn-quick-amount" data-amount="100">$100</button>
-                            <button type="button" class="btn-quick-amount" data-amount="500">$500</button>
-                        </div>
-                    </div>
-                    
-                    <!-- Método de depósito -->
-                    <div class="form-group">
-                        <label for="paymentMethod" class="form-label">Método de pago</label>
-                        <select id="paymentMethod" name="paymentMethod" class="form-input form-select" required>
-                            <option value="">Selecciona un método</option>
-                            <option value="debit">Tarjeta de débito</option>
-                            <option value="credit">Tarjeta de crédito</option>
-                            <option value="transfer">Transferencia bancaria</option>
-                        </select>
-                    </div>
-                    
-                    <!-- Descripción opcional -->
-                    <div class="form-group">
-                        <label for="description" class="form-label">Descripción (opcional)</label>
-                        <input 
-                            type="text" 
-                            id="description" 
-                            name="description" 
-                            class="form-input" 
-                            placeholder="Ej: Depósito mensual"
-                            maxlength="100"
-                        >
-                    </div>
-                </fieldset>
-                
-                <!-- Botones de acción -->
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary btn-block">
-                        Realizar Depósito
-                    </button>
-                    <a href="menu.html" class="btn btn-outline btn-block">
-                        Cancelar
-                    </a>
                 </div>
-            </form>
-        </section>
-        
-        <!-- Información adicional -->
-        <aside class="info-card">
-            <h3>ℹ️ Información importante</h3>
-            <ul>
-                <li>Los depósitos se reflejan de forma inmediata en tu saldo.</li>
-                <li>No hay comisiones por depósitos.</li>
-                <li>Puedes depositar las 24 horas del día.</li>
-            </ul>
-        </aside>
+                
+                <!-- Formulario de depósito -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white py-3">
+                        <h2 class="h5 mb-0"><i class="bi bi-cash-stack me-2"></i>Realizar depósito</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="depositForm" class="needs-validation" novalidate>
+                            <!-- Monto -->
+                            <div class="mb-4">
+                                <label for="amount" class="form-label fw-semibold">Monto a depositar</label>
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text">$</span>
+                                    <input 
+                                        type="number" 
+                                        id="amount" 
+                                        name="amount" 
+                                        class="form-control" 
+                                        placeholder="0.00"
+                                        min="1"
+                                        step="0.01"
+                                        required
+                                    >
+                                </div>
+                                <div class="form-text">Monto mínimo: $1.00</div>
+                                <div class="invalid-feedback">Ingresa un monto válido.</div>
+                            </div>
+                            
+                            <!-- Montos rápidos -->
+                            <div class="mb-4">
+                                <label class="form-label fw-semibold">Montos rápidos</label>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button type="button" class="btn btn-outline-primary quick-amount-btn" data-amount="10">$10</button>
+                                    <button type="button" class="btn btn-outline-primary quick-amount-btn" data-amount="50">$50</button>
+                                    <button type="button" class="btn btn-outline-primary quick-amount-btn" data-amount="100">$100</button>
+                                    <button type="button" class="btn btn-outline-primary quick-amount-btn" data-amount="500">$500</button>
+                                    <button type="button" class="btn btn-outline-primary quick-amount-btn" data-amount="1000">$1000</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Método de pago -->
+                            <div class="mb-4">
+                                <label for="paymentMethod" class="form-label fw-semibold">Método de pago</label>
+                                <select id="paymentMethod" name="paymentMethod" class="form-select form-select-lg" required>
+                                    <option value="">Selecciona un método</option>
+                                    <option value="debit">💳 Tarjeta de débito</option>
+                                    <option value="credit">💳 Tarjeta de crédito</option>
+                                    <option value="transfer">🏦 Transferencia bancaria</option>
+                                </select>
+                                <div class="invalid-feedback">Selecciona un método de pago.</div>
+                            </div>
+                            
+                            <!-- Descripción -->
+                            <div class="mb-4">
+                                <label for="description" class="form-label fw-semibold">Descripción (opcional)</label>
+                                <input 
+                                    type="text" 
+                                    id="description" 
+                                    name="description" 
+                                    class="form-control" 
+                                    placeholder="Ej: Depósito mensual"
+                                    maxlength="100"
+                                >
+                            </div>
+                            
+                            <!-- Botones -->
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-success btn-lg">
+                                    <i class="bi bi-check-circle me-2"></i>Realizar Depósito
+                                </button>
+                                <a href="menu.html" class="btn btn-outline-secondary">Cancelar</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Columna lateral -->
+            <div class="col-lg-4">
+                <!-- Info card -->
+                <div class="card bg-light border-0">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-info-circle text-primary me-2"></i>Información</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2 d-flex align-items-start">
+                                <i class="bi bi-check-circle text-success me-2 mt-1"></i>
+                                <span>Los depósitos se reflejan de forma inmediata.</span>
+                            </li>
+                            <li class="mb-2 d-flex align-items-start">
+                                <i class="bi bi-check-circle text-success me-2 mt-1"></i>
+                                <span>Sin comisiones por depósitos.</span>
+                            </li>
+                            <li class="mb-2 d-flex align-items-start">
+                                <i class="bi bi-check-circle text-success me-2 mt-1"></i>
+                                <span>Disponible 24/7.</span>
+                            </li>
+                            <li class="d-flex align-items-start">
+                                <i class="bi bi-shield-check text-success me-2 mt-1"></i>
+                                <span>Transacciones 100% seguras.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Métodos aceptados -->
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h6 class="card-title text-muted">Métodos aceptados</h6>
+                        <div class="d-flex gap-2 flex-wrap">
+                            <span class="badge bg-light text-dark border">💳 Visa</span>
+                            <span class="badge bg-light text-dark border">💳 Mastercard</span>
+                            <span class="badge bg-light text-dark border">🏦 Transferencia</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     
+    <!-- Modal de éxito -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-body py-5">
+                    <i class="bi bi-check-circle-fill text-success" style="font-size: 5rem;"></i>
+                    <h4 class="mt-3">¡Depósito Exitoso!</h4>
+                    <p class="text-muted" id="successMessage">Tu depósito ha sido procesado correctamente.</p>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Footer -->
-    <footer class="footer">
-        <p class="text-muted">© 2026 Alke Wallet - Todos los derechos reservados</p>
+    <footer class="bg-light border-top py-3 mt-auto">
+        <div class="container text-center">
+            <p class="text-muted mb-0">© 2026 Alke Wallet - Todos los derechos reservados</p>
+        </div>
     </footer>
     
-    <!-- Scripts -->
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Scripts personalizados -->
     <script src="js/main.js"></script>
 </body>
 </html>
-

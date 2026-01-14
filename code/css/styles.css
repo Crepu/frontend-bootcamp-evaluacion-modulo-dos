@@ -3,6 +3,7 @@
    Lección 1: Estructura inicial
    Lección 2: HTML semántico y nuevos componentes
    Lección 3: Estilos avanzados y responsividad
+   Lección 4: Integración Bootstrap 5
    ============================================= */
 
 /* Google Fonts - Tipografía Profesional */
@@ -120,7 +121,6 @@ body {
     box-shadow: var(--shadow-md);
     padding: 30px;
     width: 100%;
-    max-width: 400px;
 }
 
 /* =============================================
@@ -1505,5 +1505,203 @@ fieldset {
         flex-direction: column;
         gap: 15px;
     }
+}
+
+/* =============================================
+   BOOTSTRAP 5 - Estilos complementarios
+   Lección 4
+   ============================================= */
+
+/* Sobrescribir variables de Bootstrap para coincidir con nuestra paleta */
+:root {
+    --bs-primary: var(--color-primary);
+    --bs-primary-rgb: var(--color-primary-rgb);
+    --bs-success: var(--color-secondary);
+    --bs-danger: var(--color-error);
+}
+
+/* Navbar personalizada */
+.navbar {
+    font-family: var(--font-family);
+}
+
+.navbar-brand {
+    font-family: var(--font-family-heading);
+}
+
+.navbar .nav-link {
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.navbar .nav-link:hover {
+    color: var(--color-primary) !important;
+}
+
+.navbar .nav-link.active {
+    color: var(--color-primary) !important;
+    font-weight: 600;
+}
+
+/* Action cards Bootstrap */
+.action-card-bs {
+    border: 1px solid var(--color-border-light);
+    transition: all var(--transition-base);
+}
+
+.action-card-bs:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-light);
+}
+
+.action-icon-bs {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--border-radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+/* Cards con hover mejorado */
+.card {
+    transition: all var(--transition-base);
+}
+
+/* Botones Bootstrap personalizados */
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+    border: none;
+    box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.25);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    box-shadow: 0 6px 16px rgba(var(--color-primary-rgb), 0.35);
+    transform: translateY(-1px);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--color-secondary-light), var(--color-secondary));
+    border: none;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, var(--color-secondary), #059669);
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.35);
+}
+
+/* Form controls Bootstrap mejorados */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 0.2rem rgba(var(--color-primary-rgb), 0.15);
+}
+
+.form-control-lg {
+    border-radius: var(--border-radius-sm);
+}
+
+/* Quick amount buttons */
+.quick-amount-btn {
+    min-width: 70px;
+}
+
+.quick-amount-btn.active,
+.quick-amount-btn:active {
+    background-color: var(--color-primary) !important;
+    color: white !important;
+}
+
+/* List group items mejorados */
+.list-group-item-action {
+    transition: all var(--transition-fast);
+}
+
+.list-group-item-action:hover {
+    background-color: var(--color-surface-hover);
+    transform: translateX(4px);
+}
+
+/* Dropdown mejorado */
+.dropdown-menu {
+    border: none;
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--border-radius-sm);
+}
+
+.dropdown-item {
+    padding: 0.6rem 1rem;
+    transition: all var(--transition-fast);
+}
+
+.dropdown-item:hover {
+    background-color: rgba(var(--color-primary-rgb), 0.08);
+}
+
+/* Alerts personalizados */
+.alert {
+    border: none;
+    border-radius: var(--border-radius-sm);
+}
+
+/* Badge personalizado */
+.badge {
+    font-weight: 500;
+}
+
+/* Modal mejorado */
+.modal-content {
+    border: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-xl);
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--color-border-light);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--color-border-light);
+}
+
+/* Toast mejorado */
+.toast {
+    border-radius: var(--border-radius-sm);
+}
+
+/* Pagination mejorada */
+.page-link {
+    border: none;
+    color: var(--color-text-light);
+}
+
+.page-item.active .page-link {
+    background-color: var(--color-primary);
+}
+
+/* Breadcrumb Bootstrap */
+.breadcrumb {
+    background: none;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "›";
+}
+
+.breadcrumb-item a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+/* Input group */
+.input-group-text {
+    background-color: var(--color-background);
+    border-color: var(--color-border);
 }
 
