@@ -78,12 +78,15 @@ code/
 - [x] Variables CSS extendidas (colores, sombras, transiciones)
 - [x] Efectos hover y estados interactivos
 
-### ⬜ Lección 4 - Framework Bootstrap
-- [ ] Integrar Bootstrap 5
-- [ ] Componentes responsivos
-- [ ] Navbar con collapse móvil
-- [ ] Modales funcionales
-- [ ] Cards y alertas
+### ✅ Lección 4 - Framework Bootstrap
+- [x] Integrar Bootstrap 5 (CDN)
+- [x] Bootstrap Icons integrado
+- [x] Componentes responsivos
+- [x] Navbar con collapse móvil
+- [x] Modales funcionales (agregar contacto, confirmar envío)
+- [x] Cards, alertas, badges, toasts
+- [x] Formularios con validación Bootstrap
+- [x] Dropdown de usuario
 
 ### ⬜ Lección 5 - JavaScript
 - [ ] Validación de login
@@ -156,6 +159,24 @@ code/
 - Balance card con decoraciones visuales
 - Transacciones con iconos coloreados por tipo
 - Animaciones escalonadas en listas
+
+### Lección 4 - Completada ✅
+- Bootstrap 5.3.2 integrado vía CDN
+- Bootstrap Icons 1.11.1 añadido
+- Navbar responsive con collapse móvil
+- Dropdown de usuario con opciones
+- Cards de resumen financiero
+- Modales funcionales:
+  - Modal agregar contacto
+  - Modal confirmar transferencia
+  - Modal depósito exitoso
+- Toast de notificaciones
+- Formularios con validación Bootstrap
+- Filtros colapsables
+- Paginación Bootstrap
+- List groups para transacciones y contactos
+- Alertas de bienvenida e información
+- Estilos CSS complementarios para Bootstrap
 
 ---
 
